@@ -45,7 +45,6 @@ class panel(object):
                             #self.newPCB.layer_by_type(layName).primitives += layer.primitives
                         except Exception as e:
                             print(e)
-                        print(len(self.newPCB.layer_by_type(layName).cam_source.statements))
                     else:
                         print("Skip", layName)
         try:
