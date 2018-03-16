@@ -150,20 +150,7 @@ class GerberFile(CamFile):
         """ Write data out to a gerber file.
         """
         with open(filename, 'w') as f:
-            ADcodes = {}
-            d = 10
             for statement in self.statements:
-
-                if statement.__class__.__name__ == 'ADParamStmt':
-                    ADcodes[statement.d] = d
-                    statement.d = d
-                    d += 1
-                    print("gerberW>", statement.to_gerber(settings or self.settings))
-                elif statement.__class__.__name__ == 'ApertureStmt':
-                    #if statment.d in ADcodes:
-                    statement.set_d(ADcodes[statement.d])
-                    print(">>", statement.to_gerber(settings or self.settings))
-
                 f.write(statement.to_gerber(settings or self.settings))
                 f.write("\n")
 
