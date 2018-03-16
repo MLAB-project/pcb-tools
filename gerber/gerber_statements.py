@@ -1083,6 +1083,9 @@ class ApertureStmt(Statement):
         self.d = int(d)
         self.deprecated = True if deprecated is not None and deprecated is not False else False
 
+    def set_d(self, d):
+        self.d = int(d)
+
     def to_gerber(self, settings=None):
         if self.deprecated:
             return 'G54D{0}*'.format(self.d)

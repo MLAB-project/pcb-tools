@@ -160,7 +160,7 @@ class FileSettings(object):
             self.angle_units = value
 
         else:
-            raise KeyError('%s is not a valid key' % key)
+            raise KeyError('{} is not a valid key'.format(key))
 
     def __eq__(self, other):
         return (self.notation == other.notation and
@@ -280,3 +280,9 @@ class CamFile(object):
 
         if filename is not None:
             ctx.dump(filename)
+
+    def write(self, filename=None):
+        ValueError("Not implemented yet for this CAM file")
+
+    def reannotate(self):
+        ValueError("Not implemented yet for this CAM file")

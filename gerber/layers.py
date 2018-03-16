@@ -209,6 +209,12 @@ class PCBLayer(object):
             layer_class = 'ipc_netlist'
         return cls(filename, layer_class, camfile)
 
+    @classmethod
+    def new_empty(cls, file):
+        filename = file
+        layer_class = guess_layer_class(file)
+        return cls(filename, layer_class, None)
+
     def __init__(self, filename=None, layer_class=None, cam_source=None, **kwargs):
         super(PCBLayer, self).__init__(**kwargs)
         self.filename = filename
@@ -223,6 +229,12 @@ class PCBLayer(object):
             return self.cam_source.bounds
         else:
             return None
+
+    def offset(self, x_offset=0,  y_offset=0):
+        self.cam_source.offset(x_offset, y_offset)
+
+    def write(self, filename = None):
+        self.cam_source.write(filename)
 
     def __repr__(self):
         return '<PCBLayer: {}>'.format(self.layer_class)

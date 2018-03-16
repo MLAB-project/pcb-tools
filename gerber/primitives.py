@@ -516,6 +516,8 @@ class Arc(Primitive):
         self.end = tuple(map(add, self.end, (x_offset, y_offset)))
         self.center = tuple(map(add, self.center, (x_offset, y_offset)))
 
+    def __str__(self):
+        return "<ARC center:{} start:{} end:{}>".format(self.center, self.start, self.end)
 
 class Circle(Primitive):
     """
@@ -589,6 +591,9 @@ class Circle(Primitive):
         equiv_position = tuple(map(add, other.position, offset))
 
         return nearly_equal(self.position, equiv_position)
+
+    def __str__(self):
+        return "<Circle center:{} diameter:{}>".format(self.position, self.diameter)
 
 
 class Ellipse(Primitive):
